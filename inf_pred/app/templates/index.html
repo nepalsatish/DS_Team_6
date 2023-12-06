@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculate Inflation</title>
+        <script>
+        function goBack() {
+            // Clear form inputs
+            document.getElementById("inflationForm").reset();
+            
+             document.getElementById("predicted").innerText = "";
+              window.location.href = "127.0.0.1:5000";
+        }
+
+    </script>
+  </head>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+    crossorigin="anonymous"
+  />
+  <body class="d-flex flex-column align-items-center mt-5">
+    <div class="w-50" style="gap: 30px">
+      <h1 class="text-center">Calculate Inflation</h1>
+      <form class="d-flex flex-column w-100" id="inflationForm" action="{{url_for('predict')}}" method="post">
+       
+        <div class="form-group">
+        <label">Open Price:</label>
+        <input type="number" class="form-control" id="openPrice" name="openPrice" required>
+      </div>
+      <div class="form-group">
+        <label">High Price:</label>
+        <input type="number" class="form-control" id="highPrice" name="highPrice" required>
+      </div>
+      <div class="form-group">
+        <label">Low Price</label>
+        <input type="number" class="form-control" id="lowPrice" name="lowPrice" required>
+      </div>
+        <div class="form-group">
+        <label">Close Price</label>
+        <input type="number" class="form-control" id="closePrice" name="closePrice" required>
+      </div>
+
+        <button
+          type="submit"
+          class="btn btn-info btn-lg"
+        >Predict</button>
+      </form>
+    </div>
+
+    <h2 id="predicted">{{prediction_text}}</h2>
+    <button class="btn btn-danger" onclick="goBack()">Clear</button>
+
+
+  </body>
+</html>
